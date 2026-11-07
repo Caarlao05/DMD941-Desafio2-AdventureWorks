@@ -105,7 +105,7 @@
                   <Name>Unidades</Name>
                   <DataType>BigInt</DataType>
                   <Source>
-                    <DataType>SmallInt</DataType>
+                    <DataType>BigInt</DataType>
                     <NullProcessing>ZeroOrBlank</NullProcessing>
                     <Source xsi:type="ColumnBinding">
                       <TableID>Ventas</TableID>

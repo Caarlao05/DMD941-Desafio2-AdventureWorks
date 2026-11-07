@@ -533,7 +533,7 @@
                   <Name>Unidades</Name>
                   <DataType>BigInt</DataType>
                   <Source>
-                    <DataType>SmallInt</DataType>
+                    <DataType>BigInt</DataType>
                     <NullProcessing>ZeroOrBlank</NullProcessing>
                     <Source xsi:type="ColumnBinding">
                       <TableID>Ventas</TableID>
@@ -802,7 +802,7 @@
               <xs:element name="VentasInternet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
                 <xs:complexType>
                   <xs:choice minOccurs="0" maxOccurs="unbounded">
-                    <xs:element name="Tiempo" msprop:DbTableName="Tiempo" msprop:FriendlyName="Tiempo" msprop:TableType="View" msprop:DbSchemaName="d2">
+                    <xs:element name="Tiempo" msprop:DbSchemaName="d2" msprop:DbTableName="Tiempo" msprop:TableType="View" msprop:FriendlyName="Tiempo">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DateKey" type="xs:int"/>
@@ -833,7 +833,7 @@
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Producto" msprop:DbTableName="Producto" msprop:FriendlyName="Producto" msprop:TableType="View" msprop:DbSchemaName="d2">
+                    <xs:element name="Producto" msprop:DbSchemaName="d2" msprop:DbTableName="Producto" msprop:TableType="View" msprop:FriendlyName="Producto">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="ProductKey" type="xs:int"/>
@@ -863,7 +863,7 @@
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Cliente" msprop:DbTableName="Cliente" msprop:FriendlyName="Cliente" msprop:TableType="View" msprop:DbSchemaName="d2">
+                    <xs:element name="Cliente" msprop:DbSchemaName="d2" msprop:DbTableName="Cliente" msprop:TableType="View" msprop:FriendlyName="Cliente">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="CustomerKey" type="xs:int"/>
@@ -877,7 +877,7 @@
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Territorio" msprop:DbTableName="Territorio" msprop:FriendlyName="Territorio" msprop:TableType="View" msprop:DbSchemaName="d2">
+                    <xs:element name="Territorio" msprop:DbSchemaName="d2" msprop:DbTableName="Territorio" msprop:TableType="View" msprop:FriendlyName="Territorio">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="SalesTerritoryKey" type="xs:int"/>
@@ -905,7 +905,7 @@
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Ventas" msprop:DbTableName="Ventas" msprop:FriendlyName="Ventas" msprop:TableType="View" msprop:DbSchemaName="d2">
+                    <xs:element name="Ventas" msprop:DbSchemaName="d2" msprop:DbTableName="Ventas" msprop:TableType="View" msprop:FriendlyName="Ventas">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="ProductKey" type="xs:int"/>

@@ -1,0 +1,61 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="f954dda5-77c7-4c9a-ab8f-2c66c7895b51" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>CuboVentasInternet</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Ventas Internet</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="d530629c-dd53-4e68-b794-bf8639c786fd">
+          <ID>Ventas Internet_Total</ID>
+          <Name>Ventas Internet_Total</Name>
+          <CreatedTimestamp>2026-11-07T07:51:14.776667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2026-11-07T07:51:14.776667Z</LastSchemaUpdate>
+          <LastProcessed>2026-11-07T07:52:53.403333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="10a94250-e1a9-4a4b-b547-10c6cf5b39ab">
+            <DataSourceID>AdventureWorksDW</DataSourceID>
+            <QueryDefinition>SELECT * FROM [d2].[Ventas]</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="f5d85601-0a49-4c9d-b07a-4c0cc4aff059">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="01436952-52d5-429d-acdb-0848739346eb" />
+          </ProactiveCaching>
+          <EstimatedSize>704900</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Pedidos</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="bb508e4a-56af-435e-8a8d-958b598be50b">
+          <ID>Pedidos_Total</ID>
+          <Name>Pedidos_Total</Name>
+          <CreatedTimestamp>2026-11-07T07:51:14.806667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2026-11-07T07:51:14.806667Z</LastSchemaUpdate>
+          <LastProcessed>2026-11-07T07:52:53.37Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="2383c38f-4db7-4b46-b5be-aadc30987048">
+            <DataSourceID>AdventureWorksDW</DataSourceID>
+            <QueryDefinition>SELECT * FROM [d2].[Ventas]</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="6f90d9db-c030-4ab0-be5f-d2ebc24a355b">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="fff311f6-acb3-476d-82b0-c40e131ba20f" />
+          </ProactiveCaching>
+          <EstimatedSize>584127</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

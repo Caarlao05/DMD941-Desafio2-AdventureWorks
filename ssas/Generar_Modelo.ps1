@@ -99,6 +99,7 @@ function Add-ModelMeasure($mg,[string]$name,[string]$column,[string]$aggregation
  $m=$mg.Measures.Add($name,$name);$m.Source=New-ItemBinding 'Ventas' $column
  $m.Source.NullProcessing='ZeroOrBlank';$m.AggregateFunction=$aggregation;$m.FormatString=$format
  if($aggregation -eq 'Count' -or $aggregation -eq 'DistinctCount' -or $column -eq 'OrderQuantity'){$m.DataType='BigInt'}else{$m.DataType='Currency'}
+ if($aggregation -eq 'Sum'){$m.Source.DataType=$m.DataType}
 }
 $mg=Add-ModelMeasureGroup 'Ventas Internet'
 Add-ModelMeasure $mg 'Ventas' 'SalesAmount' 'Sum' '#,##0.00'
@@ -115,6 +116,7 @@ foreach($issue in $issues){$log+= ($issue | Format-List * | Out-String)}
 $log | Set-Content (Join-Path $OutputDirectory 'Validacion_AMO.txt') -Encoding utf8
 $settings=New-Object System.Xml.XmlWriterSettings
 $settings.Indent=$true;$settings.Encoding=New-Object System.Text.UTF8Encoding($false)
+ $settings.OmitXmlDeclaration=$true
 $writer=[System.Xml.XmlWriter]::Create((Join-Path $OutputDirectory '01_Crear_Cubo.xmla'),$settings)
 try{(New-Object Microsoft.AnalysisServices.Scripter).ScriptCreate([Microsoft.AnalysisServices.MajorObject[]]@($database),$writer,$false)}finally{$writer.Dispose()}
 $writer=[System.Xml.XmlWriter]::Create((Join-Path $OutputDirectory '02_Procesar_Cubo.xmla'),$settings)

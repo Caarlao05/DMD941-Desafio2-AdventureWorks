@@ -1,17 +1,7 @@
-# Conciliación de resultados
+# Conciliación verificada
 
-No llenar SSAS o Power BI con números copiados de las capturas: obtenerlos de las ejecuciones reales.
+SQL y SSAS: Ventas 29358677.2207, Unidades 60398, Pedidos 27659, Lineas 60398. Power BI: ventas 29358677.22 por redondeo, resto de conteos coincidentes. Ticket 1061.45.
 
-| Indicador | Referencia anterior DW2025 | SQL local DW2022 | SSAS local | Power BI | Diferencia y resultado |
-|---|---:|---|---|---|---|
-| Ventas | 29358677.22 | Pendiente | Pendiente | Pendiente | Pendiente |
-| Unidades | 60398 | Pendiente | Pendiente | Pendiente | Pendiente |
-| Pedidos distintos | 27659 | Pendiente | Pendiente | Pendiente | Pendiente |
-| Líneas | 60398 | Pendiente | Pendiente | Pendiente | Pendiente |
-| Ticket promedio | 1061.45 calculado | Pendiente | Pendiente | Pendiente | Pendiente |
+Top10 es un subconjunto: ventas 10355525.92 y unidades 3636. No compararlo como total general.
 
-Los valores de referencia no son una expectativa obligatoria para otro respaldo. El criterio de aprobación es que SQL local, SSAS local y Power BI coincidan para la misma base, versión, periodo, fecha de pedido, filtros y permisos.
-
-Importes: comparar con igual precisión (2 decimales), diferencia 0.00. Conteos: igualdad exacta. Comprobar también año × país y categorías, no solo el total.
-
-Registrar instancia SQL, instancia SSAS, versión del respaldo, fecha de procesamiento, filtros y capturas asociadas. Revisar Q08, Q09, Q12 y Q14 antes de aprobar.
+La prueba del año 2013 demuestra interacción. No se afirma validación exhaustiva de combinaciones ni ejecución local de todos los controles SQL adicionales.

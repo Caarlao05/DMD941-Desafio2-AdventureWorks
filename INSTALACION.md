@@ -1,35 +1,25 @@
-# Preparar esta computadora
+# Desafío 2 · AdventureWorksDW2022
 
-## 1 SQL Server y Analysis Services
+Carlos Eduardo Saavedra Vega (SV253275) y Jason Alexander Castro Ascencio (CA152304).
 
-Ya se encontraron archivos de SQL Server 2022 y un respaldo AdventureWorksDW2022.bak en Descargas. No borres las instancias existentes.
+Repositorio: https://github.com/Caarlao05/DMD941-Desafio2-AdventureWorks
 
-- Busca Servicios en Inicio y revisa SQL Server (MSSQLSERVER) o la instancia nombrada que vayas a usar. Si está detenida, inicia el servicio con permisos de administrador. Si falla, conserva el mensaje de error.
-- Abre SSMS y prueba localhost para la instancia predeterminada; para una instancia nombrada, usa EQUIPO\INSTANCIA. Anota cuál conecta.
-- Para agregar SSAS, usa el instalador completo de SQL Server 2022: Instalación > Nueva instalación independiente o agregar características. Si pide una carpeta de medios, el lanzador SQL2022-SSEI no sustituye los medios completos: descarga el medio desde la opción del instalador y ejecuta setup.exe.
-- En características selecciona Analysis Services. Elige Modo multidimensional, agrega tu usuario como administrador y completa la instalación.
-- Si el instalador pide nombre de instancia, usa un nombre identificable como SSAS_DMD941; la conexión será localhost\SSAS_DMD941. Anota el nombre realmente instalado.
-- No selecciones modo Tabular para este trabajo. Agregar la extensión de Visual Studio no instala el servidor SSAS.
+## Ejecución verificada
 
-Guía oficial: https://learn.microsoft.com/en-us/analysis-services/instances/install-windows/install-analysis-services
+Base local restaurada; vistas SQL creadas; cubo SSAS procesado; proyecto importado, revisado y desplegado desde Visual Studio sin errores; Power BI conectado en vivo y filtro de 2013 probado.
 
-## 2 Visual Studio
+Totales: ventas 29,358,677.2207; unidades 60,398; líneas 60,398; pedidos distintos 27,659; ticket promedio 1,061.45. Power BI redondea ventas a 29,358,677.22. La tabla Top 10 tiene su propio subtotal (10,355,525.92).
 
-- Instala Visual Studio Community de una versión compatible con Microsoft Analysis Services Projects. Visual Studio Code, Build Tools y SSMS no sustituyen el IDE Visual Studio.
-- Abre Visual Studio > Extensiones > Administrar extensiones; busca Microsoft Analysis Services Projects y verifica la compatibilidad del editor Microsoft con tu versión.
-- Descarga la extensión y cierra Visual Studio si el instalador lo solicita.
-- Reabre Visual Studio y comprueba que Nuevo proyecto incluya Analysis Services Multidimensional and Data Mining Project.
+## Reproducción
 
-Guía oficial: https://learn.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt
+1. Instalar SQL Server 2022 Developer y Analysis Services en modo multidimensional, Visual Studio 2022 con Analysis Services Projects, proveedor MSOLEDBSQL y Power BI Desktop.
+2. Descargar AdventureWorksDW2022.bak desde Microsoft y restaurarlo como AdventureWorksDW2022. El respaldo no se incluye.
+3. Ejecutar sql/01_Comprobar_Restauracion.sql y sql/02_Vistas_Cubo.sql en el motor localhost. sql/03_Consultas_AdventureWorks.sql contiene análisis y controles adicionales; no todos cuentan con evidencia de ejecución local.
+4. Ejecutar sql/04_Permisos_SSAS.sql como administrador del motor para la cuenta de la instancia predeterminada de SSAS. Si la cuenta del servicio es distinta, ajustar el script.
+5. Abrir ssas/DMD941_Desafio2/DMD941_Desafio2.sln. Revisar origen de datos e implementación: localhost y DMD941_Desafio2. Implementar y procesar completamente el modelo.
+6. Abrir powerbi/VentasInternet.pbix con las credenciales Windows autorizadas en SSAS. La conexión en vivo requiere el servidor disponible; el PBIX no contiene una copia importada de los datos.
+7. Comparar los totales y probar el segmentador. Guardar el informe y compartir el enlace del repositorio en el aula digital.
 
-## 3 Power BI Desktop
+El esquema d2 conserva las tablas originales. PedidoKey usa DENSE_RANK: procesar completamente cuando cambien los datos; no usarlo para cargas incrementales.
 
-Instala la versión de 64 bits desde Microsoft y ábrela. Para construir y guardar este informe local no hace falta publicarlo en Power BI Service. La entrega usa el PBIX y GitHub.
-
-Guía oficial: https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop
-
-## 4 Retomar la implementación
-
-Con SSMS conectado al motor y SSAS instalado en modo multidimensional, continúa con README.md. Comparte los nombres de las dos instancias, no contraseñas.
-
-Los avisos de administrador y autenticación deben completarse por el usuario. No desactives controles de seguridad para instalar.
+El informe final está en informe/Informe_Desafio_2_ampliado.pdf; las evidencias locales están en evidencias/. No se incluyen contraseñas, respaldos ni cachés de Visual Studio en el ZIP final.
