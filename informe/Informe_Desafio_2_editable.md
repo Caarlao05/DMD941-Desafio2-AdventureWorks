@@ -164,5 +164,5 @@ DMD941 - Desafio Práctico 2 (2).pdf: consigna y rúbrica de evaluación.
 Word desafio 2.pdf: borrador del informe y capturas de restauración y consultas.
 Consultas SQL.sql: consultas originales Q00-Q09.
 ### Nota sobre la revisión
-Se amplió la redacción, se interpretaron los resultados visibles y se preparó una guía para implementar los componentes pendientes. Se generaron las definiciones SSAS y se validó su estructura con AMO. No se ejecutó SQL ni se desplegó o procesó el modelo en un servidor. El archivo PBIX y la publicación del repositorio siguen pendientes.
+Se amplió la redacción, se interpretaron los resultados visibles y se preparó una guía para implementar los componentes pendientes. Se generaron las definiciones SSAS y se validó su estructura con AMO. No se ejecutó SQL ni se desplegó o procesó el modelo en un servidor. El archivo PBIX sigue pendiente. Los archivos preparados y el informe se publicaron en el repositorio indicado en la portada; se actualizarán después de la ejecución local.
 El script revisado incorpora controles adicionales; su ejecución y sus resultados deben registrarse en el entorno del estudiante.
