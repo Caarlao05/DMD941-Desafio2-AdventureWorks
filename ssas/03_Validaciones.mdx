@@ -1,0 +1,35 @@
+-- Ejecutar cada SELECT por separado en SSMS conectado a Analysis Services.
+-- Base SSAS: DMD941_Desafio2. Cubo: CuboVentasInternet.
+-- M01: total general. Comparar con Q01 y Q11 de SQL.
+SELECT {[Measures].[Ventas],[Measures].[Unidades],
+ [Measures].[Pedidos distintos],[Measures].[Lineas],
+ [Measures].[Ticket promedio]} ON COLUMNS
+FROM [CuboVentasInternet];
+
+-- M02: ventas por anio. Comparar con Q02.
+SELECT {[Measures].[Ventas],[Measures].[Unidades]} ON COLUMNS,
+ NON EMPTY [Tiempo].[Anio].[Anio].Members ON ROWS
+FROM [CuboVentasInternet];
+
+-- M03: matriz anio x pais. Comparar con Q07.
+SELECT {[Measures].[Ventas]} ON COLUMNS,
+ NON EMPTY CrossJoin([Tiempo].[Anio].[Anio].Members,
+ [Territorio].[Pais].[Pais].Members) ON ROWS
+FROM [CuboVentasInternet];
+
+-- M04: categorias. Comparar con Q06.
+SELECT {[Measures].[Ventas],[Measures].[Unidades]} ON COLUMNS,
+ NON EMPTY [Producto].[Categoria].[Categoria].Members ON ROWS
+FROM [CuboVentasInternet];
+
+-- M05: diez claves de producto con mas ventas. Comparar con Q05.
+-- En empates, el ultimo puesto puede diferir: SQL tiene desempate por nombre/clave.
+SELECT {[Measures].[Ventas],[Measures].[Unidades]} ON COLUMNS,
+ TopCount(NonEmpty([Producto].[Producto].[Producto].Members,
+ [Measures].[Ventas]),10,[Measures].[Ventas]) ON ROWS
+FROM [CuboVentasInternet];
+
+-- M06: evolucion mensual cronologica. Comparar con Q03.
+SELECT {[Measures].[Ventas]} ON COLUMNS,
+ NON EMPTY [Tiempo].[Mes].[Mes].Members ON ROWS
+FROM [CuboVentasInternet];

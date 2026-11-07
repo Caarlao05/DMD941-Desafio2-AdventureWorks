@@ -1,0 +1,967 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Database xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+      <ID>DMD941_Desafio2</ID>
+      <Name>DMD941_Desafio2</Name>
+      <ddl200:CompatibilityLevel>1100</ddl200:CompatibilityLevel>
+      <Description>Ventas por Internet. Definicion generada offline; requiere desplegar y procesar.</Description>
+      <Dimensions>
+        <Dimension>
+          <ID>Tiempo</ID>
+          <Name>Tiempo</Name>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>VentasInternet</DataSourceViewID>
+          </Source>
+          <Type>Time</Type>
+          <Attributes>
+            <Attribute>
+              <ID>Tiempo</ID>
+              <Name>Tiempo</Name>
+              <Type>Date</Type>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Tiempo</TableID>
+                    <ColumnID>DateKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>10</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Tiempo</TableID>
+                  <ColumnID>Fecha</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Mes</AttributeID>
+                  <Name>Mes</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+            </Attribute>
+            <Attribute>
+              <ID>Anio</ID>
+              <Name>Anio</Name>
+              <Type>Years</Type>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>SmallInt</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Tiempo</TableID>
+                    <ColumnID>Anio</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <ID>Trimestre</ID>
+              <Name>Trimestre</Name>
+              <Type>Quarters</Type>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Tiempo</TableID>
+                    <ColumnID>TrimestreKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>12</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Tiempo</TableID>
+                  <ColumnID>Trimestre</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Anio</AttributeID>
+                  <Name>Anio</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <ID>Mes</ID>
+              <Name>Mes</Name>
+              <Type>Months</Type>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Tiempo</TableID>
+                    <ColumnID>MesKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>7</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Tiempo</TableID>
+                  <ColumnID>Mes</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Trimestre</AttributeID>
+                  <Name>Trimestre</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+          </Attributes>
+          <AttributeAllMemberName>Todos</AttributeAllMemberName>
+          <Hierarchies>
+            <Hierarchy>
+              <ID>Calendario</ID>
+              <Name>Calendario</Name>
+              <Levels>
+                <Level>
+                  <ID>Anio</ID>
+                  <Name>Anio</Name>
+                  <SourceAttributeID>Anio</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Trimestre</ID>
+                  <Name>Trimestre</Name>
+                  <SourceAttributeID>Trimestre</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Mes</ID>
+                  <Name>Mes</Name>
+                  <SourceAttributeID>Mes</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Tiempo</ID>
+                  <Name>Tiempo</Name>
+                  <SourceAttributeID>Tiempo</SourceAttributeID>
+                </Level>
+              </Levels>
+            </Hierarchy>
+          </Hierarchies>
+        </Dimension>
+        <Dimension>
+          <ID>Producto</ID>
+          <Name>Producto</Name>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>VentasInternet</DataSourceViewID>
+          </Source>
+          <Type>Products</Type>
+          <Attributes>
+            <Attribute>
+              <ID>Producto</ID>
+              <Name>Producto</Name>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Producto</TableID>
+                    <ColumnID>ProductKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>50</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Producto</TableID>
+                  <ColumnID>Producto</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Subcategoria</AttributeID>
+                  <Name>Subcategoria</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+            </Attribute>
+            <Attribute>
+              <ID>Categoria</ID>
+              <Name>Categoria</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Producto</TableID>
+                    <ColumnID>CategoriaKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>50</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Producto</TableID>
+                  <ColumnID>Categoria</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <ID>Subcategoria</ID>
+              <Name>Subcategoria</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Producto</TableID>
+                    <ColumnID>SubcategoriaKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>50</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Producto</TableID>
+                  <ColumnID>Subcategoria</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Categoria</AttributeID>
+                  <Name>Categoria</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+          </Attributes>
+          <AttributeAllMemberName>Todos</AttributeAllMemberName>
+          <Hierarchies>
+            <Hierarchy>
+              <ID>Clasificacion</ID>
+              <Name>Clasificacion</Name>
+              <Levels>
+                <Level>
+                  <ID>Categoria</ID>
+                  <Name>Categoria</Name>
+                  <SourceAttributeID>Categoria</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Subcategoria</ID>
+                  <Name>Subcategoria</Name>
+                  <SourceAttributeID>Subcategoria</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Producto</ID>
+                  <Name>Producto</Name>
+                  <SourceAttributeID>Producto</SourceAttributeID>
+                </Level>
+              </Levels>
+            </Hierarchy>
+          </Hierarchies>
+        </Dimension>
+        <Dimension>
+          <ID>Cliente</ID>
+          <Name>Cliente</Name>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>VentasInternet</DataSourceViewID>
+          </Source>
+          <Type>Customers</Type>
+          <Attributes>
+            <Attribute>
+              <ID>Cliente</ID>
+              <Name>Cliente</Name>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Cliente</TableID>
+                    <ColumnID>CustomerKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>15</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Cliente</TableID>
+                  <ColumnID>Cliente</ColumnID>
+                </Source>
+              </NameColumn>
+            </Attribute>
+          </Attributes>
+          <AttributeAllMemberName>Todos</AttributeAllMemberName>
+        </Dimension>
+        <Dimension>
+          <ID>Territorio</ID>
+          <Name>Territorio</Name>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>VentasInternet</DataSourceViewID>
+          </Source>
+          <Attributes>
+            <Attribute>
+              <ID>Territorio</ID>
+              <Name>Territorio</Name>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Territorio</TableID>
+                    <ColumnID>SalesTerritoryKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>50</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Territorio</TableID>
+                  <ColumnID>Region</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Pais</AttributeID>
+                  <Name>Pais</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+            </Attribute>
+            <Attribute>
+              <ID>Pais</ID>
+              <Name>Pais</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Territorio</TableID>
+                    <ColumnID>Pais</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>50</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Territorio</TableID>
+                  <ColumnID>Pais</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>Grupo</AttributeID>
+                  <Name>Grupo</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <ID>Grupo</ID>
+              <Name>Grupo</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>50</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Territorio</TableID>
+                    <ColumnID>Grupo</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>50</DataSize>
+                <NullProcessing>Error</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Territorio</TableID>
+                  <ColumnID>Grupo</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+          </Attributes>
+          <AttributeAllMemberName>Todos</AttributeAllMemberName>
+          <Hierarchies>
+            <Hierarchy>
+              <ID>Geografia</ID>
+              <Name>Geografia</Name>
+              <Levels>
+                <Level>
+                  <ID>Grupo</ID>
+                  <Name>Grupo</Name>
+                  <SourceAttributeID>Grupo</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Pais</ID>
+                  <Name>Pais</Name>
+                  <SourceAttributeID>Pais</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>Territorio</ID>
+                  <Name>Territorio</Name>
+                  <SourceAttributeID>Territorio</SourceAttributeID>
+                </Level>
+              </Levels>
+            </Hierarchy>
+          </Hierarchies>
+        </Dimension>
+      </Dimensions>
+      <Cubes>
+        <Cube>
+          <ID>CuboVentasInternet</ID>
+          <Name>CuboVentasInternet</Name>
+          <Dimensions>
+            <Dimension>
+              <ID>Tiempo</ID>
+              <Name>Tiempo</Name>
+              <DimensionID>Tiempo</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Tiempo</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Anio</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Trimestre</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Mes</AttributeID>
+                </Attribute>
+              </Attributes>
+              <Hierarchies>
+                <Hierarchy>
+                  <HierarchyID>Calendario</HierarchyID>
+                </Hierarchy>
+              </Hierarchies>
+            </Dimension>
+            <Dimension>
+              <ID>Producto</ID>
+              <Name>Producto</Name>
+              <DimensionID>Producto</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Producto</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Categoria</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Subcategoria</AttributeID>
+                </Attribute>
+              </Attributes>
+              <Hierarchies>
+                <Hierarchy>
+                  <HierarchyID>Clasificacion</HierarchyID>
+                </Hierarchy>
+              </Hierarchies>
+            </Dimension>
+            <Dimension>
+              <ID>Cliente</ID>
+              <Name>Cliente</Name>
+              <DimensionID>Cliente</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Cliente</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <ID>Territorio</ID>
+              <Name>Territorio</Name>
+              <DimensionID>Territorio</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Territorio</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Pais</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Grupo</AttributeID>
+                </Attribute>
+              </Attributes>
+              <Hierarchies>
+                <Hierarchy>
+                  <HierarchyID>Geografia</HierarchyID>
+                </Hierarchy>
+              </Hierarchies>
+            </Dimension>
+          </Dimensions>
+          <DefaultMeasure>[Measures].[Ventas]</DefaultMeasure>
+          <MeasureGroups>
+            <MeasureGroup>
+              <ID>Ventas Internet</ID>
+              <Name>Ventas Internet</Name>
+              <Measures>
+                <Measure>
+                  <ID>Ventas</ID>
+                  <Name>Ventas</Name>
+                  <DataType>Currency</DataType>
+                  <Source>
+                    <DataType>Currency</DataType>
+                    <NullProcessing>ZeroOrBlank</NullProcessing>
+                    <Source xsi:type="ColumnBinding">
+                      <TableID>Ventas</TableID>
+                      <ColumnID>SalesAmount</ColumnID>
+                    </Source>
+                  </Source>
+                  <FormatString>#,##0.00</FormatString>
+                </Measure>
+                <Measure>
+                  <ID>Unidades</ID>
+                  <Name>Unidades</Name>
+                  <DataType>BigInt</DataType>
+                  <Source>
+                    <DataType>SmallInt</DataType>
+                    <NullProcessing>ZeroOrBlank</NullProcessing>
+                    <Source xsi:type="ColumnBinding">
+                      <TableID>Ventas</TableID>
+                      <ColumnID>OrderQuantity</ColumnID>
+                    </Source>
+                  </Source>
+                  <FormatString>#,##0</FormatString>
+                </Measure>
+                <Measure>
+                  <ID>Lineas</ID>
+                  <Name>Lineas</Name>
+                  <AggregateFunction>Count</AggregateFunction>
+                  <DataType>BigInt</DataType>
+                  <Source>
+                    <DataType>SmallInt</DataType>
+                    <NullProcessing>ZeroOrBlank</NullProcessing>
+                    <Source xsi:type="ColumnBinding">
+                      <TableID>Ventas</TableID>
+                      <ColumnID>SalesOrderLineNumber</ColumnID>
+                    </Source>
+                  </Source>
+                  <FormatString>#,##0</FormatString>
+                </Measure>
+              </Measures>
+              <StorageMode>Molap</StorageMode>
+              <ProcessingMode>Regular</ProcessingMode>
+              <Dimensions>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Tiempo</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Tiempo</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>OrderDateKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Producto</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Producto</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>ProductKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Cliente</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Cliente</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>CustomerKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Territorio</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Territorio</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>SalesTerritoryKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+              </Dimensions>
+              <Partitions>
+                <Partition>
+                  <ID>Ventas Internet_Total</ID>
+                  <Name>Ventas Internet_Total</Name>
+                  <Source xsi:type="QueryBinding">
+                    <DataSourceID>AdventureWorksDW</DataSourceID>
+                    <QueryDefinition>SELECT * FROM [d2].[Ventas]</QueryDefinition>
+                  </Source>
+                  <StorageMode>Molap</StorageMode>
+                  <ProcessingMode>Regular</ProcessingMode>
+                </Partition>
+              </Partitions>
+            </MeasureGroup>
+            <MeasureGroup>
+              <ID>Pedidos</ID>
+              <Name>Pedidos</Name>
+              <Measures>
+                <Measure>
+                  <ID>Pedidos distintos</ID>
+                  <Name>Pedidos distintos</Name>
+                  <AggregateFunction>DistinctCount</AggregateFunction>
+                  <DataType>BigInt</DataType>
+                  <Source>
+                    <DataType>BigInt</DataType>
+                    <NullProcessing>ZeroOrBlank</NullProcessing>
+                    <Source xsi:type="ColumnBinding">
+                      <TableID>Ventas</TableID>
+                      <ColumnID>PedidoKey</ColumnID>
+                    </Source>
+                  </Source>
+                  <FormatString>#,##0</FormatString>
+                </Measure>
+              </Measures>
+              <StorageMode>Molap</StorageMode>
+              <ProcessingMode>Regular</ProcessingMode>
+              <Dimensions>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Tiempo</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Tiempo</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>OrderDateKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Producto</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Producto</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>ProductKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Cliente</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Cliente</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>CustomerKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension xsi:type="RegularMeasureGroupDimension">
+                  <CubeDimensionID>Territorio</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Territorio</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Ventas</TableID>
+                            <ColumnID>SalesTerritoryKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+              </Dimensions>
+              <Partitions>
+                <Partition>
+                  <ID>Pedidos_Total</ID>
+                  <Name>Pedidos_Total</Name>
+                  <Source xsi:type="QueryBinding">
+                    <DataSourceID>AdventureWorksDW</DataSourceID>
+                    <QueryDefinition>SELECT * FROM [d2].[Ventas]</QueryDefinition>
+                  </Source>
+                  <StorageMode>Molap</StorageMode>
+                  <ProcessingMode>Regular</ProcessingMode>
+                </Partition>
+              </Partitions>
+            </MeasureGroup>
+          </MeasureGroups>
+          <Source>
+            <DataSourceViewID>VentasInternet</DataSourceViewID>
+          </Source>
+          <MdxScripts>
+            <MdxScript>
+              <ID>Calculos</ID>
+              <Name>Calculos</Name>
+              <Commands>
+                <Command>
+                  <Text>CALCULATE; CREATE MEMBER CURRENTCUBE.[Measures].[Ticket promedio] AS IIF(IsEmpty([Measures].[Pedidos distintos]) OR [Measures].[Pedidos distintos] = 0, NULL, [Measures].[Ventas] / [Measures].[Pedidos distintos]), FORMAT_STRING = '#,##0.00', VISIBLE = 1, ASSOCIATED_MEASURE_GROUP = 'Ventas Internet';</Text>
+                </Command>
+              </Commands>
+            </MdxScript>
+          </MdxScripts>
+        </Cube>
+      </Cubes>
+      <DataSources>
+        <DataSource xsi:type="RelationalDataSource">
+          <ID>AdventureWorksDW</ID>
+          <Name>AdventureWorksDW</Name>
+          <ConnectionString>Provider=MSOLEDBSQL;Data Source=localhost;Initial Catalog=AdventureWorksDW2022;Integrated Security=SSPI;</ConnectionString>
+          <ImpersonationInfo>
+            <ImpersonationMode>ImpersonateServiceAccount</ImpersonationMode>
+          </ImpersonationInfo>
+          <Timeout>PT0S</Timeout>
+        </DataSource>
+      </DataSources>
+      <DataSourceViews>
+        <DataSourceView>
+          <ID>VentasInternet</ID>
+          <Name>VentasInternet</Name>
+          <DataSourceID>AdventureWorksDW</DataSourceID>
+          <Schema>
+            <xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" id="VentasInternet">
+              <xs:element name="VentasInternet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Tiempo" msprop:DbTableName="Tiempo" msprop:FriendlyName="Tiempo" msprop:TableType="View" msprop:DbSchemaName="d2">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DateKey" type="xs:int"/>
+                          <xs:element name="Anio" type="xs:short"/>
+                          <xs:element name="TrimestreKey" type="xs:int"/>
+                          <xs:element name="Trimestre">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="12"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="MesKey" type="xs:int"/>
+                          <xs:element name="Mes">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="7"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Fecha">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="10"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Producto" msprop:DbTableName="Producto" msprop:FriendlyName="Producto" msprop:TableType="View" msprop:DbSchemaName="d2">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ProductKey" type="xs:int"/>
+                          <xs:element name="Producto">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="SubcategoriaKey" type="xs:int"/>
+                          <xs:element name="Subcategoria">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="CategoriaKey" type="xs:int"/>
+                          <xs:element name="Categoria">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Cliente" msprop:DbTableName="Cliente" msprop:FriendlyName="Cliente" msprop:TableType="View" msprop:DbSchemaName="d2">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="CustomerKey" type="xs:int"/>
+                          <xs:element name="Cliente">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="15"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Territorio" msprop:DbTableName="Territorio" msprop:FriendlyName="Territorio" msprop:TableType="View" msprop:DbSchemaName="d2">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SalesTerritoryKey" type="xs:int"/>
+                          <xs:element name="Region">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Pais">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Grupo">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="50"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Ventas" msprop:DbTableName="Ventas" msprop:FriendlyName="Ventas" msprop:TableType="View" msprop:DbSchemaName="d2">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ProductKey" type="xs:int"/>
+                          <xs:element name="OrderDateKey" type="xs:int"/>
+                          <xs:element name="CustomerKey" type="xs:int"/>
+                          <xs:element name="SalesTerritoryKey" type="xs:int"/>
+                          <xs:element name="SalesOrderNumber">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="20"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="SalesOrderLineNumber" type="xs:short"/>
+                          <xs:element name="SalesAmount" type="xs:decimal"/>
+                          <xs:element name="OrderQuantity" type="xs:short"/>
+                          <xs:element name="PedidoKey" type="xs:long"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                </xs:complexType>
+                <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+                  <xs:selector xpath=".//Tiempo"/>
+                  <xs:field xpath="DateKey"/>
+                </xs:unique>
+                <xs:unique name="Producto_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+                  <xs:selector xpath=".//Producto"/>
+                  <xs:field xpath="ProductKey"/>
+                </xs:unique>
+                <xs:unique name="Cliente_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+                  <xs:selector xpath=".//Cliente"/>
+                  <xs:field xpath="CustomerKey"/>
+                </xs:unique>
+                <xs:unique name="Territorio_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+                  <xs:selector xpath=".//Territorio"/>
+                  <xs:field xpath="SalesTerritoryKey"/>
+                </xs:unique>
+                <xs:unique name="Ventas_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+                  <xs:selector xpath=".//Ventas"/>
+                  <xs:field xpath="SalesOrderNumber"/>
+                  <xs:field xpath="SalesOrderLineNumber"/>
+                </xs:unique>
+              </xs:element>
+              <xs:annotation>
+                <xs:appinfo>
+                  <msdata:Relationship name="FK_Tiempo" msdata:parent="Tiempo" msdata:child="Ventas" msdata:parentkey="DateKey" msdata:childkey="OrderDateKey"/>
+                  <msdata:Relationship name="FK_Producto" msdata:parent="Producto" msdata:child="Ventas" msdata:parentkey="ProductKey" msdata:childkey="ProductKey"/>
+                  <msdata:Relationship name="FK_Cliente" msdata:parent="Cliente" msdata:child="Ventas" msdata:parentkey="CustomerKey" msdata:childkey="CustomerKey"/>
+                  <msdata:Relationship name="FK_Territorio" msdata:parent="Territorio" msdata:child="Ventas" msdata:parentkey="SalesTerritoryKey" msdata:childkey="SalesTerritoryKey"/>
+                </xs:appinfo>
+              </xs:annotation>
+            </xs:schema>
+            <VentasInternet xmlns=""/>
+          </Schema>
+        </DataSourceView>
+      </DataSourceViews>
+    </Database>
+  

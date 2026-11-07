@@ -1,0 +1,12 @@
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.bak
+*.mdf
+*.ldf
+*.abf
+*.log
+*.dwproj.user
+.env

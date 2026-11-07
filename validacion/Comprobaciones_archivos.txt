@@ -1,0 +1,7 @@
+XML bien formado: correcto.
+Dimensiones: 4.
+Grupos de medidas: 2.
+Ambos grupos referencian las 4 dimensiones: correcto.
+Tema JSON: sintaxis correcta.
+AMO offline: sin errores estructurales.
+SQL, MDX, Visual Studio y Power BI: ejecucion real pendiente.

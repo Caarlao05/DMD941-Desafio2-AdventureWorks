@@ -1,0 +1,2 @@
+Validacion AMO offline: True
+No comprueba conexion, permisos, datos, compilacion en Visual Studio ni procesamiento SSAS.

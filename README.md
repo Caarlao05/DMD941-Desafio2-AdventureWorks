@@ -63,4 +63,3 @@ No incluir el respaldo .bak ni credenciales en el repositorio. El respaldo ofici
 ## Entrega
 
 Guardar la solución .sln y proyecto .dwproj creados por Visual Studio, el PBIX, las capturas finales y el PDF actualizado. Publicar la carpeta completa en GitHub, verificar acceso del docente y añadir el enlace a la portada y al aula digital. Este paquete aún no acredita una ejecución completa.
-
