@@ -10,3 +10,11 @@ obj/
 *.log
 *.dwproj.user
 .env
+
+# Documentos y archivos de entrega
+*.pdf
+*.docx
+*.zip
+evidencias/
+informe/
+validacion/

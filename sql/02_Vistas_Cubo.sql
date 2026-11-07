@@ -1,6 +1,6 @@
 USE [AdventureWorksDW2022];
 GO
--- Aislamiento del trabajo: no se alteran las tablas de AdventureWorks.
+-- Vistas para el cubo.
 IF SCHEMA_ID(N'd2') IS NULL EXEC(N'CREATE SCHEMA d2 AUTHORIZATION dbo');
 GO
 CREATE OR ALTER VIEW d2.Tiempo AS
@@ -37,9 +37,8 @@ SELECT ProductKey, OrderDateKey, CustomerKey, SalesTerritoryKey,
  DENSE_RANK() OVER (ORDER BY SalesOrderNumber) AS PedidoKey
 FROM dbo.FactInternetSales;
 GO
--- PedidoKey es una clave numerica derivada para DistinctCount de SSAS.
--- Es estable en cada lectura completa del mismo conjunto; realizar Process Full
--- si cambia el origen. No usar esta clave derivada para cargas incrementales.
+-- PedidoKey permite contar pedidos distintos en SSAS.
+-- Si cambian los datos, hacer un procesamiento completo; no usar cargas incrementales.
 SELECT COUNT_BIG(*) AS Lineas, SUM(SalesAmount) AS Ventas,
  SUM(CONVERT(bigint,OrderQuantity)) AS Unidades,
  COUNT(DISTINCT SalesOrderNumber) AS PedidosOriginales,

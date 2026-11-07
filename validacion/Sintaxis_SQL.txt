@@ -1,3 +1,0 @@
-01_Comprobar_Restauracion.sql: 0 errores de sintaxis
-02_Vistas_Cubo.sql: 0 errores de sintaxis
-03_Consultas_AdventureWorks.sql: 0 errores de sintaxis

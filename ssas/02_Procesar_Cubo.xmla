@@ -1,6 +1,0 @@
-<Process xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
-  <Type>ProcessFull</Type>
-  <Object>
-    <DatabaseID>DMD941_Desafio2</DatabaseID>
-  </Object>
-</Process>
